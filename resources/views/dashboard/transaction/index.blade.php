@@ -1,6 +1,5 @@
-@extends('layouts.app', ['page' => 'Transactions', 'pageSlug' => 'transactions', 'section' => 'transactions'])
+<x-layouts.dashboard pageSlug='transactions' page='Transactions' section='transactions' >
 
-@section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card ">
@@ -97,4 +96,5 @@
             </div>
         </div>
     </div>
-@endsection
+    
+</x-layouts.dashboard>

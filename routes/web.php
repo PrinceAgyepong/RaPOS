@@ -32,3 +32,12 @@ Route::get('/dashboard', function () {
 Route::post('/dashboard', function () {
     return view('dashboard/index');
 })->name('dashboard.index');
+
+
+Route::get('/transactions/stats', function () {
+    return view('dashboard/transaction/stats');
+})->name('transactions.stats');
+
+Route::get('/transactions', function () {
+    return view('dashboard/transaction/index');
+})->name('transactions.index');

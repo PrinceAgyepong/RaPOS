@@ -1,6 +1,7 @@
-@extends('layouts.app', ['pageSlug' => 'stats', 'page' => 'Statistics', 'section' => 'transactions'])
 
-@section('content')
+<x-layouts.dashboard pageSlug='stats' page='Statistics' section='transactions' >
+
+
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -59,37 +60,5 @@
             </div>
         </div>
     </div>
-
-
-    {{-- <div class="row">
-        <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-8">
-                        <h4 class="card-title">Sales Statistics</h4>
-                    </div>
-                    <div class="col-4 text-right">
-                        <a href="" class="btn btn-sm btn-primary">View Sales</a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <table class="table">
-                    <thead>
-                        <th>Period</th>
-                        <th>Sales</th>
-                        <th>Clients</th>
-                        <th>Total Stock</th>
-                        <th data-toggle="tooltip" data-placement="bottom" title="Promedio de ingresos por cada venta">Average C / V</th>
-                        <th>Billed Amount</th>
-                        <th>To Finalize</th>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        </div>
-    </div> --}}
-@endsection
+    
+</x-layouts.dashboard>
