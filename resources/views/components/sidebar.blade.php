@@ -4,7 +4,7 @@
         <ul class="nav">
             {{-- @if (auth()->user()->isAdmin) --}}
                 <li @if ($pageSlug == 'dashboard') class="active " @endif>
-                    <a href="{{ ('dashboard.index') }}">
+                    <a href="{{ route('dashboard.index') }}">
                         <i class="tim-icons icon-chart-bar-32"></i>
                         <p>Dashboard</p>
                     </a>
