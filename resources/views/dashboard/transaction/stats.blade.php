@@ -52,18 +52,18 @@ $stats = [
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-6">
                             <h4 class="card-title">Transaction Statistics</h4>
                         </div>
-                        <div class="col-4 text-right">
+                        <div class="col-6">
                             <a href="{{ route('transactions.index') }}" class="btn btn-sm btn-primary">
                                 View Transactions
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <table class="table">
+                <div class="card-body" style="overflow-x: scroll">
+                    <table class="table" >
                         <thead>
                             <th>Period</th>
                             <th>Transactions</th>
