@@ -1,4 +1,4 @@
-<x-layout class="d-flex justify-content-center align-items-center" style="height: 100vh">
+<x-layouts.auth class="d-flex justify-content-center align-items-center" style="height: 100vh">
     <div class="row col-10 h-75 border">
         <div class="col-sm-12 col-md-6 bg-primary">
 
@@ -6,8 +6,8 @@
         <div class="col-sm-12 col-md-6 container p-4">
             <h1 class="text-center text-primary">RAFARRAZI AFRICAN COUTURE</h1>
             <hr class="col-10 mb-4 mx-auto">
-            <form>
-
+            <form action="{{ route('dashboard.index') }}">
+                @csrf
                 <x-input label="Username" />
                 <x-input label="Email" />
                 <x-input label="Password" />
@@ -28,4 +28,4 @@
 
         </div>
     </div>
-</x-layout>
+</x-layouts.auth>
