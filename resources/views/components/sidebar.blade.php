@@ -22,13 +22,13 @@
                     <ul class="nav pl-4">
                         {{-- @if (auth()->user()->isAdmin) --}}
                             <li @if ($pageSlug == 'stats') class="active " @endif>
-                                <a href="{{ ('transactions.stats') }}">
+                                <a href="{{ route('transactions.stats') }}">
                                     <i class="tim-icons icon-chart-pie-36"></i>
                                     <p>Statistics</p>
                                 </a>
                             </li>
                             <li @if ($pageSlug == 'transactions') class="active " @endif>
-                                <a href="{{ ('transactions.index') }}">
+                                <a href="{{ route('transactions.index') }}">
                                     <i class="tim-icons icon-bullet-list-67"></i>
                                     <p>All</p>
                                 </a>
