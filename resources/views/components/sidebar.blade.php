@@ -35,7 +35,7 @@
                             </li>
                         {{-- @endif --}}
                         <li @if ($pageSlug == 'sales') class="active " @endif>
-                            <a href="{{ ('sales.index') }}">
+                            <a href="{{ route('sales.index') }}">
                                 <i class="tim-icons icon-bag-16"></i>
                                 <p>Sales</p>
                             </a>

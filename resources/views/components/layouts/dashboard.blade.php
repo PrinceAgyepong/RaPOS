@@ -24,6 +24,86 @@
     <link href="{{ asset('assets') }}/css/theme.css" rel="stylesheet" />
     {{-- @yield('css') --}}
 
+
+    {{-- sales show --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <style>
+        .lds-ellipsis {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 13px;
+        }
+
+        .lds-ellipsis div {
+            position: absolute;
+            top: 33px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #4554c2;
+            animation-timing-function: cubic-bezier(0, 1, 1, 0);
+        }
+
+        .lds-ellipsis div:nth-child(1) {
+            left: 8px;
+            animation: lds-ellipsis1 0.6s infinite;
+            top: 0;
+            /* bottom: 0; */
+        }
+
+        .lds-ellipsis div:nth-child(2) {
+            left: 8px;
+            animation: lds-ellipsis2 0.6s infinite;
+            top: 0;
+            /* bottom: 0; */
+        }
+
+        .lds-ellipsis div:nth-child(3) {
+            left: 32px;
+            animation: lds-ellipsis2 0.6s infinite;
+            top: 0;
+            /* bottom: 0; */
+        }
+
+        .lds-ellipsis div:nth-child(4) {
+            left: 56px;
+            animation: lds-ellipsis3 0.6s infinite;
+            top: 0;
+            /* bottom: 0; */
+        }
+
+        @keyframes lds-ellipsis1 {
+            0% {
+                transform: scale(0);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes lds-ellipsis3 {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(0);
+            }
+        }
+
+        @keyframes lds-ellipsis2 {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(24px, 0);
+            }
+        }
+    </style>
+
 </head>
 
 <body class="white-content {{ $class ?? '' }}">
@@ -208,6 +288,78 @@
         $(document).ready(function() {
             demo.initDashboardPageCharts();
         });
+    </script>
+
+    {{-- sales index --}}
+    <script>
+        $(function() {
+            $('#all').click(function() {
+                $('.open').show()
+                $('.unbalanced').show()
+                $('.balanced').show()
+                $('.try').show()
+            })
+            $('#open').click(function() {
+                $('.open').show()
+                $('.unbalanced').hide()
+                $('.balanced').hide()
+                $('.try').hide()
+            })
+            $('#unbalanced').click(function() {
+                $('.open').hide()
+                $('.unbalanced').show()
+                $('.balanced').hide()
+                $('.try').hide()
+            })
+            $('#balanced').click(function() {
+                $('.open').hide()
+                $('.unbalanced').hide()
+                $('.try').hide()
+                $('.balanced').show()
+            })
+            $('#try-out').click(function() {
+                $('.open').hide()
+                $('.unbalanced').hide()
+                $('.balanced').hide()
+                $('.try').show()
+            })
+        })
+    </script>
+
+    {{-- sales show --}}
+    <script src="{{ asset('assets') }}/js/sweetalerts2.js"></script>
+    <script>
+        $(function() {
+            $oTime = 0;
+            $('#input-code').keyup(function(event) {
+                const date = new Date();
+                $nTime = date.getTime();
+                if ($nTime - $oTime > 50) {
+                    $(this).val($(this).val()[$(this).val().length - 1])
+                }
+                console.log($nTime - $oTime);
+                $oTime = $nTime;
+            })
+
+            $('#input-code').on('change', function() {
+                if ($(this).val().length > 5) {
+                    $('#sales-products-store-form').hide().append($(this))
+                    $('#sales-products-store-form').submit();
+                }
+            })
+        })
+    </script>
+
+    <script>
+        $(function() {
+            $('.alert').slideDown('slow')
+
+        })
+        $(function() {
+            setTimeout(() => {
+                $('.alert').slideUp('slow', 0)
+            }, 3000);
+        })
     </script>
 </body>
 

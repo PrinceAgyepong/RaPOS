@@ -33,11 +33,26 @@ Route::post('/dashboard', function () {
     return view('dashboard/index');
 })->name('dashboard.index');
 
+Route::get('/transactions', function () {
+    return view('dashboard/transaction/index');
+})->name('transactions.index');
 
 Route::get('/transactions/stats', function () {
     return view('dashboard/transaction/stats');
 })->name('transactions.stats');
 
-Route::get('/transactions', function () {
-    return view('dashboard/transaction/index');
-})->name('transactions.index');
+Route::get('/transactions/sales', function () {
+    return view('dashboard/transaction/sales/index');
+})->name('sales.index');
+
+Route::get('/transactions/sales/create', function () {
+    return view('dashboard/transaction/sales/create');
+})->name('sales.create');
+
+Route::get('/transactions/sales/id/show', function () {
+    return view('dashboard/transaction/sales/show');
+})->name('sales.store');
+
+Route::post('/transactions/sales/id/show', function () {
+    return view('dashboard/transaction/sales/show');
+})->name('sales.store');

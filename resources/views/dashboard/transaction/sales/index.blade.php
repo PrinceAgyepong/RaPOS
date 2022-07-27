@@ -1,15 +1,21 @@
-@extends('layouts.app', ['page' => 'Sales', 'pageSlug' => 'sales', 'section' => 'transactions'])
 
-@section('content')
+
+<x-layouts.dashboard pageSlug='sales' page='Sales' section='transactions'>
     {{-- @include('alerts.success') --}}
     <div class="row">
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-6">
                             <h4 class="card-title">Sales</h4>
                         </div>
+                        
+                        <div class="col-6 text-right">
+                            <a href="{{ route('sales.create') }}" class="btn btn-sm btn-primary">Register Sale</a>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mt-3">
                         <div class="col-4 d-flex justify-content-center align-items-center">
                             <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
                                 <label class="btn btn-sm btn-primary btn-simple active" id="all">
@@ -49,18 +55,15 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="col-4 text-right">
-                            <a href="{{ route('sales.create') }}" class="btn btn-sm btn-primary">Register Sale</a>
-                        </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="">
+                    <div class="" style="overflow-x: scroll">
                         <table class="table">
                             <thead>
                                 <th>Date</th>
                                 <th>Client</th>
-                                <th>User</th>
+                                <th>Emp.</th>
                                 <th>Products</th>
                                 <th>Total Stock</th>
                                 <th>Total Amount</th>
@@ -68,94 +71,28 @@
                                 <th></th>
                             </thead>
                             <tbody>
-                                @foreach ($sales as $sale)
-                                    <tr class="{{ $sale->status }}">
-                                        <td>{{ date('d-m-y', strtotime($sale->created_at)) }}</td>
-                                        <td><a href="">{{ $sale->client->name }}</a></td>
-                                        <td>{{ $sale->user->name }}</td>
-                                        <td class="text-center">{{ $sale->products->count() }}</td>
-                                        <td class="text-center">{{ $sale->products->sum('qty') }}</td>
-                                        <td class="text-center">{{ $sale->products->sum('total_amount') }}</td>
-                                        {{-- <td>{{ $sale->products->count() }}</td> --}}
-                                        {{-- <td>{{ $sale->products->sum('qty') }}</td> --}}
-                                        {{-- <td>{{ format_money($sale->transactions->sum('amount')) }}</td> --}}
-                                        <td>
-                                            {{ $sale->status }}
-                                        </td>
-                                        <td class="td-actions text-right">
-
-                                            @if ($sale->status == 'open')
-                                                <a href="{{ route('sales.edit', $sale->id) }}" class="btn btn-link"
-                                                    data-toggle="tooltip" data-placement="bottom" title="Edit Sale">
-                                                    <i class="tim-icons icon-pencil"></i>
-                                                </a>
-                                            @endif
-                                            <a href="{{ route('sales.show', $sale->id) }}" class="btn btn-link"
-                                                data-toggle="tooltip" data-placement="bottom" title="View Sale">
-                                                <i class="tim-icons icon-zoom-split"></i>
-                                            </a>
-                                            @if (auth()->user()->isAdmin)
-                                                <form action="{{ route('sales.destroy', $sale->id) }}" method="post"
-                                                    class="d-inline">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="button" class="btn btn-link" data-toggle="tooltip"
-                                                        data-placement="bottom" title="Delete Sale"
-                                                        onclick="confirm('Are you sure you want to delete this sale? All your records will be permanently deleted.') ? this.parentElement.submit() : ''">
-                                                        <i class="tim-icons icon-simple-remove"></i>
-                                                    </button>
-                                                </form>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                <tr class="balanced">
+                                    <td>2022-Jul-11</td>
+                                    <td>Bossu Skato</td>
+                                    <td>Mick</td>
+                                    <td>7</td>
+                                    <td>10</td>
+                                    <td>1980</td>
+                                    <td>balanced</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
                 <div class="card-footer py-4">
                     <nav class="d-flex justify-content-end" aria-label="...">
-                        {{ $sales->links('vendor.pagination.bootstrap-4') }}
+                        
                     </nav>
                 </div>
             </div>
         </div>
     </div>
-@endsection
 
-@push('js')
-    <script>
-        $(function() {
-            $('#all').click(function() {
-                $('.open').show()
-                $('.unbalanced').show()
-                $('.balanced').show()
-                $('.try').show()
-            })
-            $('#open').click(function() {
-                $('.open').show()
-                $('.unbalanced').hide()
-                $('.balanced').hide()
-                $('.try').hide()
-            })
-            $('#unbalanced').click(function() {
-                $('.open').hide()
-                $('.unbalanced').show()
-                $('.balanced').hide()
-                $('.try').hide()
-            })
-            $('#balanced').click(function() {
-                $('.open').hide()
-                $('.unbalanced').hide()
-                $('.try').hide()
-                $('.balanced').show()
-            })
-            $('#try-out').click(function() {
-                $('.open').hide()
-                $('.unbalanced').hide()
-                $('.balanced').hide()
-                $('.try').show()
-            })
-        })
-    </script>
-@endpush
+    
+
+</x-layouts.dashboard>

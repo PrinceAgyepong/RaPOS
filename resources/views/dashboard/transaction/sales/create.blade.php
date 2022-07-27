@@ -1,6 +1,4 @@
-@extends('layouts.app', ['page' => 'Register Sale', 'pageSlug' => 'sales-create', 'section' => 'transactions'])
-
-@section('content')
+<x-layouts.dashboard pageSlug='sales-create' page='Register Sale' section='transactions'>
     <div class="container-fluid mt--7">
         {{-- @include('alerts.error') --}}
         <div class="row">
@@ -26,13 +24,7 @@
                                     <label class="form-control-label" for="input-name">Client</label>
                                         <input type="text" class="form-control {{ $errors->has('name') ? ' border-danger' : '' }}" list="usersList" name="name" autofocus required>
                                         <datalist id="usersList">
-                                            @foreach ($clients as $client)
-                                                @if ($client['id'] == old('client'))
-                                                    <option value="{{ $client['name'] }}" selected> @if( $client['phone'] ) {{ $client['phone'] }} @else <i>unset</i> @endif</option>
-                                                @else
-                                                    <option value="{{ $client['name'] }}"> @if( $client['phone'] ) {{ $client['phone'] }} @else <i>unset</i> @endif</option>
-                                                @endif
-                                            @endforeach
+                                            <option value="Bossu Skato">0244345486</option>
                                         </datalist>
                                     {{-- @include('alerts.feedback', ['field' => 'client_id']) --}}
                                 </div>
@@ -45,12 +37,18 @@
             </div>
         </div>
     </div>
-@endsection
 
-@push('js')
     <script>
         new SlimSelect({
             select: '.form-select'
         })
     </script>
-@endpush
+</x-layouts.dashboard>
+
+{{-- @push('js')
+    <script>
+        new SlimSelect({
+            select: '.form-select'
+        })
+    </script>
+@endpush --}}

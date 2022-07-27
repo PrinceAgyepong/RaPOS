@@ -1,15 +1,44 @@
-<x-layouts.dashboard pageSlug='transactions' page='Transactions' section='transactions' >
+@php
+$transactions = [
+    [
+        'date' => '2022-Jul-11',
+        'time' => '09:12 AM',
+        'type' => 'balance payment (full)',
+        'amount' => '40.00',
+        'client' => '14',
+        'provider' => '---',
+    ],
+    [
+        'date' => '2022-Jul-11',
+        'time' => '09:30 AM',
+        'type' => 'balance payment (partial)',
+        'amount' => '50.00',
+        'client' => '3',
+        'provider' => '---',
+    ],
+    [
+        'date' => '2022-Jul-11',
+        'time' => '11:30 AM',
+        'type' => 'balance payment (partial)',
+        'amount' => '2500.00',
+        'client' => '---',
+        'provider' => '2',
+    ],
+];
+@endphp
+<x-layouts.dashboard pageSlug='transactions' page='Transactions' section='transactions'>
 
     <div class="row">
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header">
-                <div class="row">
-                        <div class="col-8">
+                    <div class="row">
+                        <div class="col-6">
                             <h4 class="card-title">Transactions</h4>
                         </div>
-                        <div class="col-4 text-right">
-                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#transactionModal">
+                        <div class="col-6 text-right">
+                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                                data-target="#transactionModal">
                                 New Transaction
                             </button>
                         </div>
@@ -18,7 +47,7 @@
                 <div class="card-body">
                     {{-- @include('alerts.success') --}}
 
-                    <div class="">
+                    <div class="" style="overflow-x: scroll">
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <th>Date</th>
@@ -32,35 +61,17 @@
                             <tbody>
                                 @foreach ($transactions as $transaction)
                                     <tr>
-                                        <td>{{ $transaction->created_at->format('Y-M-d-D') }}</td>
+                                        <td>{{ $transaction['date'] }}</td>
 
-                                        <td>{{ $transaction->created_at->format('h:i A') }}</td>
+                                        <td>{{ $transaction['time'] }}</td>
 
-                                        <td>{{ $transaction->type }}</td>
+                                        <td>{{ $transaction['type'] }}</td>
 
-                                        @if ($transaction->amount)
-                                            <td>{{ $transaction->amount }}</td>
-                                        @else
-                                            <td>---</td>
-                                        @endif
+                                        <td>{{ $transaction['amount'] }}</td>
 
-                                        @if ($transaction->sale_id)
-                                            <td>{{ $clients->where('id', $transaction->sale->client_id)->first()->name }}</td>
-                                        @else
-                                            <td>---</td>
-                                        @endif
+                                        <td>{{ $transaction['client'] }}</td>
 
-                                        @if ($transaction->expense)
-                                            @if ($transaction->expense->provider_id)
-                                                <td>{{ $transaction->expense->provider_id}}</td>
-                                            @else
-                                                <td>---</td>
-                                            @endif
-                                        @else
-                                            <td>---</td>
-                                        @endif
-
-
+                                        <td>{{ $transaction['provider'] }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -69,19 +80,20 @@
                 </div>
                 <div class="card-footer py-4">
                     <nav class="d-flex justify-content-end" aria-label="...">
-                        {{ $transactions->links('vendor.pagination.bootstrap-4') }}
+                        {{--  $transactions->links('vendor.pagination.bootstrap-4')  --}}
                     </nav>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="transactionModal" tabindex="-1" role="dialog" aria-labelledby="transactionModal" aria-hidden="true">
+    <div class="modal fade" id="transactionModal" tabindex="-1" role="dialog" aria-labelledby="transactionModal"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">New Transaction</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -96,5 +108,5 @@
             </div>
         </div>
     </div>
-    
+
 </x-layouts.dashboard>
