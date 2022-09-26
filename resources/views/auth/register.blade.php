@@ -10,8 +10,8 @@
                 @csrf
                 <x-input label="Username" />
                 <x-input label="Email" />
-                <x-input label="Password" />
-                <x-input label="Retype Password" />
+                <x-input label="Password" type="password" />
+                <x-input label="Retype Password" type="password"/>
 
                 <div class="row mb-4">
                     <div class="text-center">
