@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\UserType;
 use Closure;
+use App\Models\UserType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class IsAdmin
+class IsCustomer
 {
     /**
      * Handle an incoming request.
@@ -18,12 +18,11 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        $admin_id = UserType::all()->where('type', 'admin')->first()->id;
-        if (Auth::user()->user_type_id == $admin_id) {
+        $staff_id = UserType::all()->where('type', 'customer')->first()->id;
+        if (Auth::user()->user_type_id == $staff_id) {
             return $next($request);
         } else {
-            return redirect('/transactions/sales');
+            return redirect('/dashboard');
         }
-        
     }
 }

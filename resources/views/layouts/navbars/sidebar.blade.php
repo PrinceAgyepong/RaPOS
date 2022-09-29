@@ -1,7 +1,7 @@
 <div class="sidebar">
     <div class="sidebar-wrapper">
         <ul class="nav">
-            @if (auth()->user()->isAdmin)
+            @if (auth()->user()->userType->type == "admin")
                 <li @if ($pageSlug == 'dashboard') class="active " @endif>
                     <a href="{{ route('dashboard.index') }}">
                         <i class="tim-icons icon-chart-bar-32"></i>
@@ -19,7 +19,7 @@
 
                 <div class="collapse {{ $section == 'transactions' ? 'show' : '' }}" id="transactions">
                     <ul class="nav pl-4">
-                        @if (auth()->user()->isAdmin)
+                        @if (auth()->user()->userType->type == "admin")
                             <li @if ($pageSlug == 'stats') class="active " @endif>
                                 <a href="{{ route('transactions.stats') }}">
                                     <i class="tim-icons icon-chart-pie-36"></i>
@@ -163,7 +163,7 @@
                 </div>
             </li> -->
 
-            @if (auth()->user()->isAdmin)
+            @if (auth()->user()->userType->type == "admin")
                 <li>
                     <a data-toggle="collapse" href="#users" {{ $section == 'users' ? 'aria-expanded=true' : '' }}>
                         <i class="tim-icons icon-badge"></i>
