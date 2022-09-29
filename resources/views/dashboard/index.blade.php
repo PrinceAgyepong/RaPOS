@@ -1,4 +1,4 @@
-<x-layouts.dashboard page='dashboard' section='' pageSlug='dashboard' >
+<x-layouts.app page='dashboard' section='' pageSlug='dashboard' >
     <div class="row">
         <div class="col-12">
             <div class="card card-chart">
