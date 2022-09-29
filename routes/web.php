@@ -98,5 +98,5 @@ Route::group(['middleware' => ['staff']], function () {
 Route::middleware('customer')->group(function () {
     Route::get('/shop', function () {
         return view('shop');
-    });
+    })->name('shop');
 });

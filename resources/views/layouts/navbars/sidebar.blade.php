@@ -1,7 +1,8 @@
+@props(['section', 'pageSlug'])
 <div class="sidebar">
     <div class="sidebar-wrapper">
         <ul class="nav">
-            @if (auth()->user()->userType->type == "admin")
+            @if (auth()->user()->userType->type == 'admin')
                 <li @if ($pageSlug == 'dashboard') class="active " @endif>
                     <a href="{{ route('dashboard.index') }}">
                         <i class="tim-icons icon-chart-bar-32"></i>
@@ -9,133 +10,148 @@
                     </a>
                 </li>
             @endif
-            <li>
-                <a data-toggle="collapse" href="#transactions"
-                    {{ $section == 'transactions' ? 'aria-expanded=true' : '' }}>
-                    <i class="tim-icons icon-bank"></i>
-                    <span class="nav-link-text">Transactions</span>
-                    <b class="caret mt-1"></b>
-                </a>
 
-                <div class="collapse {{ $section == 'transactions' ? 'show' : '' }}" id="transactions">
-                    <ul class="nav pl-4">
-                        @if (auth()->user()->userType->type == "admin")
-                            <li @if ($pageSlug == 'stats') class="active " @endif>
-                                <a href="{{ route('transactions.stats') }}">
-                                    <i class="tim-icons icon-chart-pie-36"></i>
-                                    <p>Statistics</p>
+            @if (auth()->user()->userType->type == 'admin' || auth()->user()->userType->type == 'staff')
+
+                <li>
+                    <a data-toggle="collapse" href="#transactions"
+                        {{ $section == 'transactions' ? 'aria-expanded=true' : '' }}>
+                        <i class="tim-icons icon-bank"></i>
+                        <span class="nav-link-text">Transactions</span>
+                        <b class="caret mt-1"></b>
+                    </a>
+
+                    <div class="collapse {{ $section == 'transactions' ? 'show' : '' }}" id="transactions">
+                        <ul class="nav pl-4">
+                            @if (auth()->user()->userType->type == 'admin')
+                                <li @if ($pageSlug == 'stats') class="active " @endif>
+                                    <a href="{{ route('transactions.stats') }}">
+                                        <i class="tim-icons icon-chart-pie-36"></i>
+                                        <p>Statistics</p>
+                                    </a>
+                                </li>
+                                <li @if ($pageSlug == 'transactions') class="active " @endif>
+                                    <a href="{{ route('transactions.index') }}">
+                                        <i class="tim-icons icon-bullet-list-67"></i>
+                                        <p>All</p>
+                                    </a>
+                                </li>
+                            @endif
+                            <li @if ($pageSlug == 'sales') class="active " @endif>
+                                <a href="{{ route('sales.index') }}">
+                                    <i class="tim-icons icon-bag-16"></i>
+                                    <p>Sales</p>
                                 </a>
                             </li>
-                            <li @if ($pageSlug == 'transactions') class="active " @endif>
-                                <a href="{{ route('transactions.index') }}">
-                                    <i class="tim-icons icon-bullet-list-67"></i>
-                                    <p>All</p>
+                            <li @if ($pageSlug == 'expenses') class="active " @endif>
+                                <a href="{{ route('expenses.index') }}">
+                                    <i class="tim-icons icon-coins"></i>
+                                    <p>Expenses</p>
                                 </a>
                             </li>
-                        @endif
-                        <li @if ($pageSlug == 'sales') class="active " @endif>
-                            <a href="{{ route('sales.index') }}">
-                                <i class="tim-icons icon-bag-16"></i>
-                                <p>Sales</p>
-                            </a>
-                        </li>
-                        <li @if ($pageSlug == 'expenses') class="active " @endif>
-                            <a href="{{ route('expenses.index') }}">
-                                <i class="tim-icons icon-coins"></i>
-                                <p>Expenses</p>
-                            </a>
-                        </li>
-                        {{-- <li @if ($pageSlug == 'balances') class="active " @endif>
+                            {{-- <li @if ($pageSlug == 'balances') class="active " @endif>
                             <a href="{{route('balances.index')}}">
                                 <i class="tim-icons icon-coins"></i>
                                 <p>Balances</p>
                             </a>
                         </li> --}}
-                        {{-- <li @if ($pageSlug == 'receipts') class="active " @endif>
+                            {{-- <li @if ($pageSlug == 'receipts') class="active " @endif>
                             <a href="{{ route('receipts.index') }}">
                                 <i class="tim-icons icon-paper"></i>
                                 <p>Receipts</p>
                             </a>
                         </li> --}}
-                        {{-- <li @if ($pageSlug == 'incomes') class="active " @endif>
+                            {{-- <li @if ($pageSlug == 'incomes') class="active " @endif>
                             <a href="">
                                 <i class="tim-icons icon-credit-card"></i>
                                 <p>Income</p>
                             </a>
                         </li> --}}
-                        {{-- <li @if ($pageSlug == 'transfers') class="active " @endif>
+                            {{-- <li @if ($pageSlug == 'transfers') class="active " @endif>
                             <a href="">
                                 <i class="tim-icons icon-send"></i>
                                 <p>Transfers</p>
                             </a>
                         </li> --}}
-                        {{-- <li @if ($pageSlug == 'payments') class="active " @endif>
+                            {{-- <li @if ($pageSlug == 'payments') class="active " @endif>
                             <a href="">
                                 <i class="tim-icons icon-money-coins"></i>
                                 <p>Payments</p>
                             </a>
                         </li> --}}
-                    </ul>
-                </div>
-            </li>
+                        </ul>
+                    </div>
+                </li>
 
-            <li>
-                <a data-toggle="collapse" href="#inventory" {{ $section == 'inventory' ? 'aria-expanded=true' : '' }}>
-                    <i class="tim-icons icon-app"></i>
-                    <span class="nav-link-text">Inventory</span>
-                    <b class="caret mt-1"></b>
-                </a>
+                <li>
+                    <a data-toggle="collapse" href="#inventory"
+                        {{ $section == 'inventory' ? 'aria-expanded=true' : '' }}>
+                        <i class="tim-icons icon-app"></i>
+                        <span class="nav-link-text">Inventory</span>
+                        <b class="caret mt-1"></b>
+                    </a>
 
-                <div class="collapse {{ $section == 'inventory' ? 'show' : '' }}" id="inventory">
-                    <ul class="nav pl-4">
-                        {{-- <li @if ($pageSlug == 'istats') class="active " @endif>
+                    <div class="collapse {{ $section == 'inventory' ? 'show' : '' }}" id="inventory">
+                        <ul class="nav pl-4">
+                            {{-- <li @if ($pageSlug == 'istats') class="active " @endif>
                             <a href="{{route('inventory.stats')}}">
                                 <i class="tim-icons icon-chart-pie-36"></i>
                                 <p>Statistics</p>
                             </a>
                         </li> --}}
-                        <li @if ($pageSlug == 'products') class="active " @endif>
-                            <a href="{{ route('products.index') }}">
-                                <i class="tim-icons icon-notes"></i>
-                                <p>Products</p>
-                            </a>
-                        </li>
-                        {{-- <li @if ($pageSlug == 'categories') class="active " @endif>
+                            <li @if ($pageSlug == 'products') class="active " @endif>
+                                <a href="{{ route('products.index') }}">
+                                    <i class="tim-icons icon-notes"></i>
+                                    <p>Products</p>
+                                </a>
+                            </li>
+                            {{-- <li @if ($pageSlug == 'categories') class="active " @endif>
                             <a href="{{route('categories.index')}}">
                                 <i class="tim-icons icon-tag"></i>
                                 <p>Categoríes</p>
                             </a>
                         </li> --}}
-                        {{-- <li @if ($pageSlug == 'receipts') class="active " @endif>
+                            {{-- <li @if ($pageSlug == 'receipts') class="active " @endif>
                             <a href="">
                                 <i class="tim-icons icon-paper"></i>
                                 <p>Receipts</p>
                             </a>
                         </li> --}}
-                    </ul>
-                </div>
-            </li>
+                        </ul>
+                    </div>
+                </li>
 
-            <li @if ($pageSlug == 'clients') class="active " @endif>
-                <a href="{{ route('clients.index') }}">
-                    <i class="tim-icons icon-single-02"></i>
-                    <p>Clients</p>
+                <li @if ($pageSlug == 'clients') class="active " @endif>
+                    <a href="{{ route('clients.index') }}">
+                        <i class="tim-icons icon-single-02"></i>
+                        <p>Clients</p>
+                    </a>
+                </li>
+
+                <li @if ($pageSlug == 'providers') class="active " @endif>
+                    <a href="{{ route('providers.index') }}">
+                        <i class="tim-icons icon-delivery-fast"></i>
+                        <p>Providers</p>
+                    </a>
+                </li>
+
+                <li @if ($pageSlug == 'methods') class="active " @endif>
+                    <a href="{{ route('methods.index') }}">
+                        <i class="tim-icons icon-wallet-43"></i>
+                        <p>Methods and Accounts</p>
+                    </a>
+                </li>
+
+            @endif
+
+            @if (auth()->user()->userType->type == "customer")
+            <li @if ($pageSlug == 'shop') class="active " @endif>
+                <a href="{{ route('/shop') }}">
+                    <i class="tim-icons icon-bag-16"></i>
+                    <p>shop</p>
                 </a>
             </li>
-
-            <li @if ($pageSlug == 'providers') class="active " @endif>
-                <a href="{{ route('providers.index') }}">
-                    <i class="tim-icons icon-delivery-fast"></i>
-                    <p>Providers</p>
-                </a>
-            </li>
-
-            <li @if ($pageSlug == 'methods') class="active " @endif>
-                <a href="{{ route('methods.index') }}">
-                    <i class="tim-icons icon-wallet-43"></i>
-                    <p>Methods and Accounts</p>
-                </a>
-            </li>
+            @endif
 
 
             <!-- <li>
@@ -163,7 +179,7 @@
                 </div>
             </li> -->
 
-            @if (auth()->user()->userType->type == "admin")
+            @if (auth()->user()->userType->type == 'admin')
                 <li>
                     <a data-toggle="collapse" href="#users" {{ $section == 'users' ? 'aria-expanded=true' : '' }}>
                         <i class="tim-icons icon-badge"></i>
@@ -195,6 +211,7 @@
                     </div>
                 </li>
             @endif
+
             <li @if ($pageSlug == 'profile') class="active " @endif>
                 <a href="{{ route('profile.index') }}">
                     <i class="tim-icons icon-badge"></i>
