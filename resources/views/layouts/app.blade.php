@@ -27,7 +27,8 @@
     <body class="white-content {{ $class ?? '' }}">
         @auth()
             <div class="wrapper">
-                    @include('layouts.navbars.sidebar')
+                <x-sidebar :pageSlug='$pageSlug' />
+                    
                 <div class="main-panel">
                     @include('layouts.navbars.navbar')
 

@@ -10,7 +10,7 @@
                     </a>
                 </li>
             @endif
-
+                
             @if (auth()->user()->userType->type == 'admin' || auth()->user()->userType->type == 'staff')
 
                 <li>

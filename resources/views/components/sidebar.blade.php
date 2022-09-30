@@ -1,4 +1,4 @@
-@props(['section', 'pageSlug'])
+@props(['section' => '', 'pageSlug'])
 <div class="sidebar">
     <div class="sidebar-wrapper">
         <ul class="nav">
@@ -152,13 +152,13 @@
                 </a>
             </li>
             <li @if ($pageSlug == 'cart') class="active " @endif>
-                <a href="">
+                <a href="{{ route('cart') }}">
                     <i class="tim-icons icon-cart"></i>
                     <p>cart</p>
                 </a>
             </li>
             <li @if ($pageSlug == 'orders') class="active " @endif>
-                <a href="">
+                <a href="{{ route('orders') }}">
                     <i class="tim-icons icon-notes"></i>
                     <p>orders</p>
                 </a>
