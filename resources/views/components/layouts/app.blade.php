@@ -20,8 +20,9 @@
     <link href="{{ asset('assets') }}/css/nucleo-icons.css" rel="stylesheet" />
 
     <!-- CSS -->
-    <link href="{{ asset('assets') }}/css/white-dashboard.css?v=1.0.0" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}">
+    <link href="{{ asset('assets') }}/css/white-dashboard.css?v=1.0.0" rel="stylesheet" />
+    {{-- <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}"> --}}
     {{-- <link href="{{ asset('assets') }}/css/theme.css" rel="stylesheet" /> --}}
     {{-- @yield('css') --}}
 

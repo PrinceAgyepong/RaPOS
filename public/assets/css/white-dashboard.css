@@ -10681,7 +10681,7 @@ fieldset[disabled] .navbar .navbar-nav>a.btn.active {
 .btn span,
 .navbar .navbar-nav>a.btn span {
   position: relative;
-  display: block;
+  /* display: block; */
 }
 
 .btn.btn-link.dropdown-toggle,
