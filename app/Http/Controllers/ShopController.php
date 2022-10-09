@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,9 @@ class ShopController extends Controller
      */
     public function index()
     {
+        // find or create user cart that hasn't been checked-out yet 
+        Cart::firstOrCreate(['client_id' =>auth()->user()->id, 'ordered_at' => null]);
+
         return view('shop');
     }
 
