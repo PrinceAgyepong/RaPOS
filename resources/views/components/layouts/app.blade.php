@@ -20,11 +20,20 @@
     <link href="{{ asset('assets') }}/css/nucleo-icons.css" rel="stylesheet" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}">
     <link href="{{ asset('assets') }}/css/white-dashboard.css?v=1.0.0" rel="stylesheet" />
     {{-- <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}"> --}}
     {{-- <link href="{{ asset('assets') }}/css/theme.css" rel="stylesheet" /> --}}
     {{-- @yield('css') --}}
+
+    {{-- shop card select --}}
+    <style>
+        .card-select {
+            box-shadow: 10px 10px 5px 0px rgba(134, 0, 12, 0.75) !important;
+            -webkit-box-shadow: 10px 10px 5px 0px rgba(134, 0, 12, 0.75) !important;
+            -moz-box-shadow: 10px 10px 5px 0px rgba(134, 0, 12, 0.75) !important;
+        }
+    </style>
 
 
     {{-- sales show --}}
@@ -111,7 +120,7 @@
 <body class="white-content {{ $class ?? '' }}">
     {{-- @auth() --}}
     <div class="wrapper">
-        
+
         <x-sidebar :pageSlug='$pageSlug' :section='$section' />
         <div class="main-panel">
             {{-- @include('layouts.navbars.navbar') --}}
