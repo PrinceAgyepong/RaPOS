@@ -19,7 +19,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -99,7 +99,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -119,7 +119,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -139,7 +139,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -159,7 +159,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -179,7 +179,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -199,7 +199,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -219,7 +219,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -239,7 +239,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -259,7 +259,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -279,7 +279,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -299,7 +299,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -319,9 +319,21 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
     </div>
+
+    <x-slot name="js">
+        <script>
+            $(function () {
+                $('.add_to_cart').click(function () {
+                    $card = $(this).parent().parent().parent();
+
+                    $card.toggleClass('card-select')
+                })
+            })
+        </script>
+    </x-slot>
     </x-layouts.dashboard>
