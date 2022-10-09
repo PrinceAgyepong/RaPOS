@@ -1,6 +1,15 @@
 <x-layouts.app page='shop' section='' pageSlug='shop'>
     <button type="button" class="btn btn-primary position-fixed p-3" style="z-index: 5; right: 10px">
-      <i class="tim-icons icon-cart"></i> <span class="badge badge-light">4</span>
+      <i class="tim-icons icon-cart"></i> <span class="badge badge-light">+4</span>
+    </button>
+    <button type="button" class="btn btn-primary position-fixed p-3" style="z-index: 5; right: 90px">
+      <i class="tim-icons icon-cart"></i> <span class="badge badge-light">view</span>
+    </button>
+    <button type="button" class="btn btn-success position-fixed p-3" style="z-index: 5; right: 10px; bottom: 30%">
+      <i class="tim-icons icon-check-2" style="vertical-align: middle;"></i> <span style="vertical-align: middle;">Save</span>
+    </button>
+    <button type="button" class="btn btn-danger position-fixed p-3" style="z-index: 5; right: 10px; bottom: 15%">
+      <i class="tim-icons icon-simple-remove " style="vertical-align: middle;"></i> <span style="vertical-align: middle;">Cancel</span>
     </button>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
