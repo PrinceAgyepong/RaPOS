@@ -332,6 +332,12 @@
                     $card = $(this).parent().parent().parent();
 
                     $card.toggleClass('card-select')
+
+                    if ($card.hasClass('card-select')) {
+                        $(this).text('REMOVE')
+                    }else{
+                        $(this).text('ADD TO CART')
+                    }
                 })
             })
         </script>
