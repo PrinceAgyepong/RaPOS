@@ -338,6 +338,8 @@
                     }else{
                         $(this).text('ADD TO CART')
                     }
+
+                    $(this).toggleClass('bg-danger')
                 })
             })
         </script>
