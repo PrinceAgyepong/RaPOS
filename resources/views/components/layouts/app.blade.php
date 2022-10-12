@@ -1,4 +1,4 @@
-@props(['pageSlug', 'section', 'page'])
+@props(['pageSlug', 'section', 'page', 'js' => ''])
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -29,7 +29,7 @@
     {{-- shop card select --}}
     <style>
         .card-select {
-            box-shadow: 10px 10px 5px 0px rgba(134, 0, 12, 0.75) !important;
+            box-shadow: 10px 10px 5px 0px #86000cbf !important;
             -webkit-box-shadow: 10px 10px 5px 0px rgba(134, 0, 12, 0.75) !important;
             -moz-box-shadow: 10px 10px 5px 0px rgba(134, 0, 12, 0.75) !important;
         }

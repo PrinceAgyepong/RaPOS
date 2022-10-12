@@ -95,7 +95,7 @@ Route::group(['middleware' => ['staff']], function () {
 });
 
 // customer
-Route::middleware('customer')->group(function () {
+Route::group(['middleware' => ['auth', 'customer']],function () {
     Route::get('/shop', '\App\Http\Controllers\ShopController@index')->name('shop');
 
 

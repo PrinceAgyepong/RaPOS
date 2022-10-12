@@ -10848,7 +10848,7 @@ fieldset[disabled] .btn-primary.active {
 .btn-success:active:hover,
 .btn-success.active:focus,
 .btn-success.active:hover {
-  background-color: #0098f0 !important;
+  background-color: #00b74a !important;
   /* /* background-image: linear-gradient(to bottom left, #00b74a, #0098f0, #00b74a) !important;
   background-image: -webkit-linear-gradient(to bottom left, #00b74a, #0098f0, #00b74a) !important;
   background-image: -o-linear-gradient(to bottom left, #00b74a, #0098f0, #00b74a) !important;
@@ -11442,7 +11442,7 @@ fieldset[disabled] .btn-neutral.active {
 .btn-neutral.btn-success:focus,
 .btn-neutral.btn-success:active,
 .btn-neutral.btn-success:active:focus {
-  color: #0098f0;
+  color: #00b74a;
 }
 
 .btn-neutral.btn-default {

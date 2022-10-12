@@ -28,7 +28,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-success add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-success add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -68,7 +68,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-success add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -88,7 +88,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-success add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-success add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -128,7 +128,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-success add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -148,7 +148,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-success add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -168,7 +168,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-success add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -188,7 +188,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-success add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -208,7 +208,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-success add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -228,7 +228,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-success add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -248,7 +248,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-success add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -268,7 +268,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-success add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -288,7 +288,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-success add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -308,7 +308,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-success add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
@@ -328,7 +328,7 @@
                         <strong>Price:</strong>
                     </p>
 
-                    <div class="text-right"><button type="button" class="btn btn-primary add_to_cart">Add to Cart</button></div>
+                    <div class="text-right"><button type="button" class="btn btn-success add_to_cart">Add to Cart</button></div>
                 </div>
             </div>
         </div>
