@@ -14,7 +14,7 @@ class AddUserTypeIdFkToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('user_type_id');
+            $table->foreignId('user_type_id')->default(3);
         });
     }
 

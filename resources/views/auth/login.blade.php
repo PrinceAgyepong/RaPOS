@@ -3,7 +3,7 @@
         <div class="col-sm-12 col-md-6 bg-primary p-0 h-100">
             <img src="{{asset('assets/img/flyer.jpg')}}" class="h-100 w-100">
         </div>
-        <div class="col-sm-12 col-md-6 container p-4 d-flex flex-column justify-content-center" style="background-color: #86000c">
+        <div class="h-100 col-sm-12 col-md-6 container p-4 d-flex flex-column justify-content-center" style="background-color: #86000c">
             <h1 class="text-center text-primary text-white">RAFARRAZI AFRICAN COUTURE</h1>
             <hr class="col-10 mb-4 mx-auto">
             <form action="{{ route('login') }}" method="POST">

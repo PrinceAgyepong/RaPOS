@@ -12,7 +12,7 @@
                         <div class="col-8">
                             <input class="form-control" id="search" type="text" placeholder="Search Keyword..." autofocus>
                         </div>
-                        @if (auth()->user()->isAdmin)
+                        @if (auth()->user()->userType->type == 'admin')
                         <div class="col-2 text-right">
                             <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary">New product</a>
                         </div>

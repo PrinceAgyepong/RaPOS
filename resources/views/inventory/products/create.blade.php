@@ -222,9 +222,9 @@
                                         <input type="text" name="barcode" id="input-code">
                                     </div>
                                 </div>
-                                {{-- <div class="text-center">
+                                <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">Save</button>
-                                </div> --}}
+                                </div>
                         </form>
                     </div>
                 </div>
