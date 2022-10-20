@@ -84,11 +84,12 @@
                                                 data-toggle="tooltip" data-placement="bottom" title="More Details">
                                                 <i class="tim-icons icon-zoom-split"></i>
                                             </a>
+                                            @if (auth()->user()->userType->type == 'admin')
                                             <a href="{{ route('products.edit', $product->id) }}" class="btn btn-link"
                                                 data-toggle="tooltip" data-placement="bottom" title="Edit Product">
                                                 <i class="tim-icons icon-pencil"></i>
                                             </a>
-                                            @if(auth()->user()->isAdmin)
+                                            
                                             <form action="{{route('products.destroy', $product->id)}}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
