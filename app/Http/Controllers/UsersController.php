@@ -14,7 +14,7 @@ class UsersController extends Controller
     }
     
     function index(){
-        $users = User::withTrashed()->where('isAdmin', false)->get();
+        $users = User::withTrashed()->where('user_type_id', 2)->get();
         // dd($users->get());
         return view('users.index', compact('users'));
     }
@@ -29,17 +29,19 @@ class UsersController extends Controller
     }
 
     function store(Request $request){
+        // dd($request);
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'email|required',
+            'email' => 'email|required|unique:users',
             'password' => 'confirmed|required',
         ]);
 
         $name = $request->name;
         $email = $request->email;
         $password = Hash::make($request->password);
+        $user_type_id = 2;
         
-        User::create(compact('name', 'email', 'password'));
+        $user = User::create(compact('name', 'email', 'password', 'user_type_id'));
 
         return redirect()->route('users.index');
     }

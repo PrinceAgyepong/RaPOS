@@ -51,7 +51,7 @@ class AuthController extends Controller
         // dd($request);
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'email|required',
+            'email' => 'email|required|unique:users',
             'password' => 'confirmed|required',
         ]);
 
