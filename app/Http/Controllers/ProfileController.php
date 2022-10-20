@@ -29,7 +29,7 @@ class ProfileController extends Controller
 
         User::find(auth()->user()->id)->update(compact('name', 'email'));
 
-        return redirect()->route('profile.index')->with('profile_changed_successfully', 'Profile changed successfully');
+        return redirect()->route('profile.index')->with('success', 'Profile changed successfully');
     }
 
     function updatePassword(Request $request){
@@ -41,12 +41,12 @@ class ProfileController extends Controller
         if (Hash::check($request->old_password, auth()->user()->password)) {
             $password = Hash::make($request->password);
             User::find(auth()->user()->id)->update(compact('password'));
-            return redirect()->route('profile.index')->with('password_changed_successfully', 'password changed successfully');
+            return redirect()->route('profile.index')->with('success', 'password changed successfully');
             
         } else {
             // $request->session()->flash('error', 'invalid password');
             
-            return redirect()->route('profile.index')->with('invalid_password', 'invalid password');
+            return redirect()->route('profile.index')->with('error', 'invalid password');
         }
         
     }

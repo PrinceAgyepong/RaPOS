@@ -24,6 +24,8 @@ Route::post('/', '\App\Http\Controllers\AuthController@login')->name('login');
 Route::post('/logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
 
 Route::get('/profile', '\App\Http\Controllers\ProfileController@index')->middleware('auth')->name('profile.index');
+Route::put('/profile/updateProfile', '\App\Http\Controllers\ProfileController@updateProfile')->middleware('auth')->name('profile.details');
+Route::put('/profile/updatePassword', '\App\Http\Controllers\ProfileController@updatePassword')->middleware('auth')->name('profile.update.password');
 
 Route::middleware('admin')->group(function () {
 
@@ -86,8 +88,7 @@ Route::group(['middleware' => ['staff']], function () {
     Route::get('/inventory/stats', '\App\Http\Controllers\InventoryController@stats')->name('inventory.stats');
 
     Route::get('/providers', '\App\Http\Controllers\ProvidersController@index')->name('providers.index');
-    Route::put('/profile/updateProfile', '\App\Http\Controllers\ProfileController@updateProfile')->name('profile.details');
-    Route::put('/profile/updatePassword', '\App\Http\Controllers\ProfileController@updatePassword')->name('profile.update.password');
+
 
 
     Route::get('/print/test/', '\App\Http\Controllers\PrintController@test')->name('print.test');
@@ -96,11 +97,11 @@ Route::group(['middleware' => ['staff']], function () {
 });
 
 // customer
-Route::group(['middleware' => ['auth', 'customer']],function () {
+Route::group(['middleware' => ['auth', 'customer']], function () {
     Route::get('/shop', '\App\Http\Controllers\ShopController@index')->name('shop');
 
 
-    
+
     Route::get('/cart', function () {
         return view('cart');
     })->name('cart');
