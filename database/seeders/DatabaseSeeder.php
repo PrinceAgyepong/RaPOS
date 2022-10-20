@@ -28,8 +28,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\User::factory()->create([
-            'name' => 'User',
-            'email' => 'user@gmail.com',
+            'name' => 'Staff',
+            'email' => 'staff@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('123'), // password
             'remember_token' => Str::random(10),
@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\User::factory()->create([
-            'name' => 'User',
+            'name' => 'Customer',
             'email' => 'customer@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('123'), // password
