@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'cash'
         ]);
 
-        $this->call(MenSeeder::class);
+        // $this->call(MenSeeder::class);
 
     }
 }
