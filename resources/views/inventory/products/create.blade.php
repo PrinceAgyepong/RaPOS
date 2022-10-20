@@ -131,7 +131,7 @@
                                     </div>
                                     <div class="form-group col">
                                         <label for="sizeDataList" class="form-label">Size</label>
-                                        <input name="size" class="form-control" list="sizeList" id="sizeDataList"
+                                        <input name="size_type" class="form-control" list="sizeList" id="sizeDataList"
                                             placeholder="e.g: (x-small, large, ...) or (34, 25, ...)" value="{{ old('size') }}">
                                         <datalist id="sizeList">
                                             @foreach ($sizes as $size)

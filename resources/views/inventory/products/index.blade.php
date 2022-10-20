@@ -60,8 +60,8 @@
                                         @else
                                             <td>GHC0.00</td>
                                         @endif
-                                        @if ($product['size'])
-                                            <td>{{ $product['size'] }}</td>
+                                        @if ($product['size_type'])
+                                            <td>{{ $product['size_type'] }}</td>
                                         @else
                                             <td>unset</td>
                                         @endif
