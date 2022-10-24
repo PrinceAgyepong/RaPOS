@@ -20,6 +20,7 @@ class CreateCartsTable extends Migration
             $table->foreign('client_id')->references('id')->on('users');
             $table->unsignedBigInteger('attendant_id')->nullable();
             $table->foreign('attendant_id')->references('id')->on('users');
+            $table->boolean('submitted')->default(false);
             $table->timestamp('ordered_at')->nullable();
             $table->timestamp('closed_at')->nullable();
             $table->timestamps();
