@@ -46,7 +46,7 @@ class ShopController extends Controller
             $cart->products()->attach($id);
         }
 
-        return redirect()->route('login.cart', $cart);
+        return redirect()->route('login.cart.show', $cart);
 
         // $data = $request->all();
         // app('redirect')->setIntendedUrl(route('cart', $cart->id));

@@ -7,7 +7,7 @@
             <h1 class="text-center text-primary text-white">RAFARRAZI AFRICAN COUTURE</h1>
             <h3 class="text-white text-center" style="padding: 0px">Register to continue order</h3>
             <hr class="col-10 mb-4 mx-auto">
-            <form action="{{ route('register.cart', $cart) }}" method="POST">
+            <form action="{{ route('register.cart.process', $cart) }}" method="POST">
                 @csrf
                 <x-input label="Username" name="name"/>
                 <x-input label="Email" type="email" name="email"/>
@@ -19,7 +19,7 @@
                         <p class="m-0 text-white">Already have an account ?</p>
                     </div>
                     <div class="text-center">
-                        <a style="color: #8a6103; text-decoration: underline;" href="{{ route('login.cart', $cart) }}">Sign in</a>
+                        <a style="color: #8a6103; text-decoration: underline;" href="{{ route('login.cart.show', $cart) }}">Sign in</a>
                     </div>
                 </div>
 
