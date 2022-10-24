@@ -38,9 +38,11 @@ Route::middleware('guest')->group(function () {
 });
 Route::middleware('auth')->group(function () {
     Route::post('/logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
-    Route::get('/profile', '\App\Http\Controllers\ProfileController@index')->middleware('auth')->name('profile.index');
-    Route::put('/profile/updateProfile', '\App\Http\Controllers\ProfileController@updateProfile')->middleware('auth')->name('profile.details');
-    Route::put('/profile/updatePassword', '\App\Http\Controllers\ProfileController@updatePassword')->middleware('auth')->name('profile.update.password');
+    Route::get('/profile', '\App\Http\Controllers\ProfileController@index')->name('profile.index');
+    Route::put('/profile/updateProfile', '\App\Http\Controllers\ProfileController@updateProfile')->name('profile.details');
+    Route::put('/profile/updatePassword', '\App\Http\Controllers\ProfileController@updatePassword')->name('profile.update.password');
+    
+    Route::get('/orders', '\App\Http\Controllers\OrderController@index')->name('order.index');
 });
 
 Route::middleware('admin')->group(function () {
@@ -72,7 +74,9 @@ Route::group(['middleware' => ['staff']], function () {
     Route::get('/transactions/sales/{sale_id}/products/payments', '\App\Http\Controllers\SaleController@payments')->name('sales.payments.index');
     Route::get('/transactions/sales/{sale_id}/products/payments/create', '\App\Http\Controllers\SaleController@createPayments')->name('sales.payments.create');
     Route::post('/transactions/sales/{sale_id}/products/payments/store', '\App\Http\Controllers\SaleController@storePayments')->name('sales.payments.store');
-
+    
+    Route::post('/order/{$order}/complete', '\App\Http\Controllers\OrderController@complete')->name('order.complete');
+   
     Route::resource('/inventory/categories', '\App\Http\Controllers\CategoryController');
 
     Route::resource('/inventory/products', '\App\Http\Controllers\ProductController');
@@ -118,7 +122,6 @@ Route::group(['middleware' => ['customer']], function () {
     Route::get('/cart/{cart}/clear', '\App\Http\Controllers\CartController@clear')->name('cart.clear');
     Route::get('/cart/{cart}/submit', '\App\Http\Controllers\CartController@submit')->name('cart.submit');
     
-    Route::get('/orders', '\App\Http\Controllers\OrderController@index')->name('order.index');
 
 
     // Route::get('/orders', function () {

@@ -39,6 +39,9 @@
                         <table class="table">
                             <thead>
                                 <th class="text-center">Date</th>
+                                @if (auth()->user()->userType->type == 'admin')
+                                    <th class="text-center">User</th>
+                                @endif
                                 <th class="text-center">Attendant</th>
                                 <th class="text-center">Total Amount</th>
                                 <th class="text-center">Status</th>
@@ -47,20 +50,27 @@
                             <tbody>
                                 @foreach ($orders as $order)
                                     <tr>
-                                        <td class="text-center">{{$order->created_at->format('Y-m-d')}}</td>
-                                        @isset($order->attendant)
-                                        <td class="text-center">{{$order->attendant}}</td>
-                                        @else
-                                        <td class="text-center">---</td>
-                                        @endisset
-                                        
-                                        <td class="text-center">{{$order->products->sum('price')}}</td>
-                                        @if ($order->attendant == true)
-                                        <td class="text-center">Completed</td>
-                                        @else
-                                        <td class="text-center">Uncompleted</td>
+                                        <td class="text-center">{{ $order->created_at->format('Y-m-d') }}</td>
+                                        @if (auth()->user()->userType->type == 'admin')
+                                            <td class="text-center">{{$order->clent_id}}</td>
                                         @endif
-                                        
+                                        @isset($order->attendant)
+                                            <td class="text-center">{{ $order->attendant }}</td>
+                                        @else
+                                            <td class="text-center">---</td>
+                                        @endisset
+
+                                        <td class="text-center">{{ $order->products->sum('price') }}</td>
+                                        @if ($order->attendant == true)
+                                            <td class="text-center">Completed</td>
+                                        @else
+                                            <td class="text-center">Uncompleted</td>
+                                        @endif
+
+                                        <td>
+
+                                            <a href="{{route('order.complete', compact('order'))}}" class="btn btn-primary text-white">complete</a>
+                                        </td>
                                     </tr>
                                 @endforeach
 

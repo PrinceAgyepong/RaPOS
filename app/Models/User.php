@@ -48,4 +48,8 @@ class User extends Authenticatable
     public function userType(){
         return $this->belongsTo(UserType::class);
     }
+
+    public function carts(){
+        return $this->hasMany(Cart::class,'client_id');
+    }
 }

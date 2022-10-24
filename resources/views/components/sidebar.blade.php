@@ -152,14 +152,14 @@
                 </a>
             </li>
             
+            @endif
+            
             <li @if ($pageSlug == 'orders') class="active " @endif>
                 <a href="{{ route('order.index') }}">
                     <i class="tim-icons icon-notes"></i>
                     <p>orders</p>
                 </a>
             </li>
-            @endif
-
 
             <!-- <li>
                 <a data-toggle="collapse" href="#clients">
