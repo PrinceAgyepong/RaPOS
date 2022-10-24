@@ -6,7 +6,7 @@
         <div class="h-100 col-sm-12 col-md-6 container p-4 d-flex flex-column justify-content-center" style="background-color: #86000c">
             <h1 class="text-center text-primary text-white">RAFARRAZI AFRICAN COUTURE</h1>
             <hr class="col-10 mb-4 mx-auto">
-            <form action="{{ route('register.user') }}" method="POST">
+            <form action="{{ route('register.process') }}" method="POST">
                 @csrf
                 <x-input label="Username" name="name"/>
                 <x-input label="Email" type="email" name="email"/>
@@ -18,7 +18,7 @@
                         <p class="m-0 text-white">Already have an account ?</p>
                     </div>
                     <div class="text-center">
-                        <a style="color: #8a6103; text-decoration: underline;" href="{{ route('login') }}">Sign in</a>
+                        <a style="color: #8a6103; text-decoration: underline;" href="{{ route('login.show') }}">Sign in</a>
                     </div>
                 </div>
 

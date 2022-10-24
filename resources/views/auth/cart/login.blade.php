@@ -29,7 +29,7 @@
                 <div class="row justify-content-center"><button type="submit" class="btn btn-primary mb-4 col-4" style="background: #8a6103">Sign in</button></div>
                 <!-- Register buttons -->
                 <div class="text-center">
-                    <p class="text-white">Not a member? <a href="{{route('register.cart', $cart)}}" style="color: #8a6103; text-decoration: underline;">Register</a></p>
+                    <p class="text-white">Not a member? <a href="{{route('register.cart.show', $cart)}}" style="color: #8a6103; text-decoration: underline;">Register</a></p>
                 </div>
             </form>
 

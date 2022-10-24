@@ -6,7 +6,7 @@
         <div class="h-100 col-sm-12 col-md-6 container p-4 d-flex flex-column justify-content-center" style="background-color: #86000c">
             <h1 class="text-center text-primary text-white">RAFARRAZI AFRICAN COUTURE</h1>
             <hr class="col-10 mb-4 mx-auto">
-            <form action="{{ route('login') }}" method="POST">
+            <form action="{{ route('login.process') }}" method="POST">
                 @csrf
                 <x-input label="Email" name="email" />
                 <x-input label="Password" type="password" name="password"/>
@@ -28,7 +28,7 @@
                 <div class="row justify-content-center"><button type="submit" class="btn btn-primary mb-4 col-4" style="background: #8a6103">Sign in</button></div>
                 <!-- Register buttons -->
                 <div class="text-center">
-                    <p class="text-white">Not a member? <a href="{{route('register')}}" style="color: #8a6103; text-decoration: underline;">Register</a></p>
+                    <p class="text-white">Not a member? <a href="{{route('register.show')}}" style="color: #8a6103; text-decoration: underline;">Register</a></p>
                 </div>
                 <div class="col row justify-content-center"><a href="/shop"  class="btn btn-primary mb-4 col-4" style="background: #8a6103">Browse At Rafarazzi</a></div>
             </form>

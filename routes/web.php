@@ -20,16 +20,20 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/shop/cart/{cart}', '\App\Http\Controllers\CartController@registerCart')->name('cart.register');
 // Route::post('/shop/cart/{cart}', '\App\Http\Controllers\CartController@registerCartProcess')->name('cart.register');
 Route::middleware('guest')->group(function () {
-    Route::get('/', '\App\Http\Controllers\AuthController@showLogin');
-    Route::post('/', '\App\Http\Controllers\AuthController@login')->name('login');
-    Route::post('/cart/{cart}', '\App\Http\Controllers\AuthController@loginCart')->name('login.cart.process');
-    Route::get('/login', '\App\Http\Controllers\AuthController@showLogin')->name('login');
-    Route::get('/login/cart/{cart}', '\App\Http\Controllers\AuthController@showLoginCart')->name('login.cart.show');
+    Route::get('/', '\App\Http\Controllers\AuthController@showLogin')->name('login.show');
+    Route::post('/', '\App\Http\Controllers\AuthController@login')->name('login.process');
 
-    Route::get('/register', '\App\Http\Controllers\AuthController@showRegister')->name('register');
-    Route::get('/register/cart/{cart}', '\App\Http\Controllers\AuthController@showRegisterCart')->name('register.cart');
-    Route::post('/register', '\App\Http\Controllers\AuthController@register')->name('register.user');
-    Route::post('/register/cart/{cart}', '\App\Http\Controllers\AuthController@registerCart')->name('register.cart');
+    Route::get('/login', '\App\Http\Controllers\AuthController@showLogin')->name('login.login.show');
+    Route::post('/login', '\App\Http\Controllers\AuthController@login')->name('login.login.process');
+    
+    Route::get('/login/cart/{cart}', '\App\Http\Controllers\AuthController@showLoginCart')->name('login.cart.show');
+    Route::post('/login/cart/{cart}', '\App\Http\Controllers\AuthController@loginCart')->name('login.cart.process');
+
+    Route::get('/register', '\App\Http\Controllers\AuthController@showRegister')->name('register.show');
+    Route::post('/register', '\App\Http\Controllers\AuthController@register')->name('register.process');
+    
+    Route::get('/register/cart/{cart}', '\App\Http\Controllers\AuthController@showRegisterCart')->name('register.cart.show');
+    Route::post('/register/cart/{cart}', '\App\Http\Controllers\AuthController@registerCart')->name('register.cart.process');
 });
 Route::middleware('auth')->group(function () {
     Route::post('/logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
