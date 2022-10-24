@@ -30,6 +30,7 @@
                 <div class="text-center">
                     <p class="text-white">Not a member? <a href="{{route('register')}}" style="color: #8a6103; text-decoration: underline;">Register</a></p>
                 </div>
+                <div class="col row justify-content-center"><a href="/shop"  class="btn btn-primary mb-4 col-4" style="background: #8a6103">Browse At Rafarazzi</a></div>
             </form>
 
         </div>
