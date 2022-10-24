@@ -6,12 +6,18 @@
                     <div class="row">
                         <div class="col-8">
                             <div>
-                                <h4 class="card-title">Cart <strong>(<span id="item-qty">4</span>)</strong></h4>
-                                <h4 class="card-title">Total Price: <strong><span id="total-price">GHC 1400.00</span></strong></h4>
+                                <h4 class="card-title">Cart <strong>(<span
+                                            id="item-qty">{{ $cart->products->count() }}</span>)</strong></h4>
+                                <h4 class="card-title">Total Price: <strong><span id="total-price">GHC
+                                            {{ $cart->products->sum('price') }}</span></strong></h4>
                             </div>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="" class="btn btn-sm btn-danger">clear</a>
+                            <a href="{{ route('cart.clear', compact('cart')) }}" class="btn btn-sm btn-danger">clear</a>
+                            @if ($cart->products->count() > 0)
+                                <a href="{{ route('cart.submit', compact('cart')) }}"
+                                    class="btn btn-sm btn-success">submit</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -24,80 +30,40 @@
                                 <th scope="col">Category</th>
                                 <th scope="col">Brand</th>
                                 <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
                                 <th scope="col"></th>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Footwear</td>
-                                    <td>Gucci</td>
-                                    <td>GHC 300.00</td>
-                                    <td>1</td>
-                                    <td>
-                                        <a href="" class="btn btn-link"
-                                            data-toggle="tooltip" data-placement="bottom" title="View Sale">
-                                            <i class="tim-icons icon-simple-add"></i>
-                                        </a>
-                                        <form action="" method="post"
-                                            class="d-inline">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="button" class="btn btn-link" data-toggle="tooltip"
-                                                data-placement="bottom" title="Delete Sale"
-                                                onclick="confirm('Are you sure you want to remove this item from cart ?.') ? '' : ''">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Trouser</td>
-                                    <td>Luis Vuitton</td>
-                                    <td>GHC 400.00</td>
-                                    <td>2</td>
-                                    <td>
-                                        <a href="" class="btn btn-link"
-                                            data-toggle="tooltip" data-placement="bottom" title="View Sale">
-                                            <i class="tim-icons icon-simple-add"></i>
-                                        </a>
-                                        <a href="" class="btn btn-link"
-                                            data-toggle="tooltip" data-placement="bottom" title="View Sale">
-                                            <i class="bi bi-dash-lg"></i>
-                                        </a>
-                                        <form action="" method="post"
-                                            class="d-inline">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="button" class="btn btn-link" data-toggle="tooltip"
-                                                data-placement="bottom" title="Delete Sale"
-                                                onclick="confirm('Are you sure you want to remove this item from cart ?.') ? '' : ''">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Footwear</td>
-                                    <td>Gucci</td>
-                                    <td>GHC 300.00</td>
-                                    <td>1</td>
-                                    <td>
-                                        <a href="" class="btn btn-link"
-                                            data-toggle="tooltip" data-placement="bottom" title="View Sale">
-                                            <i class="tim-icons icon-simple-add"></i>
-                                        </a>
-                                        <form action="" method="post"
-                                            class="d-inline">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="button" class="btn btn-link" data-toggle="tooltip"
-                                                data-placement="bottom" title="Delete Sale"
-                                                onclick="confirm('Are you sure you want to remove this item from cart ?.') ? '' : ''">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                @if ($cart->products->count() > 0)
+                                    @foreach ($cart->products as $product)
+                                        <tr>
+                                            <td>{{ $product->category }}</td>
+                                            <td>{{ $product->name }}</td>
+                                            <td>GHC {{ $product->price }}</td>
+                                            <td>
+                                                <form action="{{route('cart.remove.product', compact('cart', 'product'))}}" method="post" class="d-inline">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-link" data-toggle="tooltip"
+                                                        data-placement="bottom" title="Delete Sale" >
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+
+                                        <td>No Products in Cart</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                @endif
+
+
+
+
+
                             </tbody>
                         </table>
                     </div>

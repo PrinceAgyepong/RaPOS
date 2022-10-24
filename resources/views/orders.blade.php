@@ -40,27 +40,31 @@
                             <thead>
                                 <th class="text-center">Date</th>
                                 <th class="text-center">Attendant</th>
-                                <th class="text-center">Quantity</th>
                                 <th class="text-center">Total Amount</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center"></th>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="text-center">04-10-22</td>
-                                    <td class="text-center">User 1</td>
-                                    <td class="text-center">5</td>
-                                    <td class="text-center">1200</td>
-                                    <td class="text-center">completed</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">04-10-22</td>
-                                    <td class="text-center">User 1</td>
-                                    <td class="text-center">3</td>
-                                    <td class="text-center">700</td>
-                                    <td class="text-center">uncompleted</td>
-                                </tr>
-                                
+                                @foreach ($orders as $order)
+                                    <tr>
+                                        <td class="text-center">{{$order->created_at->format('Y-m-d')}}</td>
+                                        @isset($order->attendant)
+                                        <td class="text-center">{{$order->attendant}}</td>
+                                        @else
+                                        <td class="text-center">---</td>
+                                        @endisset
+                                        
+                                        <td class="text-center">{{$order->products->sum('price')}}</td>
+                                        @if ($order->attendant == true)
+                                        <td class="text-center">Completed</td>
+                                        @else
+                                        <td class="text-center">Uncompleted</td>
+                                        @endif
+                                        
+                                    </tr>
+                                @endforeach
+
+
                             </tbody>
                         </table>
                     </div>
@@ -72,4 +76,4 @@
             </div>
         </div>
     </div>
-</x-layouts.dashboard>
+    </x-layouts.dashboard>

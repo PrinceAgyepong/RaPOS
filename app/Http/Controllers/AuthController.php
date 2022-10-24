@@ -23,6 +23,7 @@ class AuthController extends Controller
 
     function showLoginCart(Cart $cart)
     {
+        // dd($cart->products);
         return view('auth.cart.login', compact('cart'));
     }
 
@@ -53,7 +54,8 @@ class AuthController extends Controller
             $cart->client_id = auth()->user()->id;
             $cart->save();
             
-            return redirect()->route('cart');
+            
+            return redirect()->route('cart.index', $cart);
         } else {
             return redirect()->back()->with('error', 'Invalid username or password');
         }
@@ -96,8 +98,12 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ])) {
+            $cart->client_id = auth()->user()->id;
+            $cart->save();
+            
+            
             // Authentication passed...
-            return redirect()->route('shop');
+            return redirect()->route('cart.index', $cart);
         } else {
             return redirect()->back()->with('error', 'Invalid username or password');
         }

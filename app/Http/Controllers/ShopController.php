@@ -36,7 +36,7 @@ class ShopController extends Controller
      */
     public function cart(Request $request)
     {
-
+        // dd($request);
         $cart =  Cart::create();
 
         $product_ids = $request->all();
@@ -45,7 +45,7 @@ class ShopController extends Controller
         foreach ($product_ids as $id => $binary) {
             $cart->products()->attach($id);
         }
-
+        // dd($cart->products);
         return redirect()->route('login.cart.show', $cart);
 
         // $data = $request->all();

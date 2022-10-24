@@ -151,14 +151,9 @@
                     <p>shop</p>
                 </a>
             </li>
-            <li @if ($pageSlug == 'cart') class="active " @endif>
-                <a href="{{ route('cart') }}">
-                    <i class="tim-icons icon-cart"></i>
-                    <p>cart</p>
-                </a>
-            </li>
+            
             <li @if ($pageSlug == 'orders') class="active " @endif>
-                <a href="{{ route('orders') }}">
+                <a href="{{ route('order.index') }}">
                     <i class="tim-icons icon-notes"></i>
                     <p>orders</p>
                 </a>

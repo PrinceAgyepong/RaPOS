@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MethodsController;
 use App\Http\Controllers\UsersController;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -111,10 +112,16 @@ Route::get('/shop', '\App\Http\Controllers\ShopController@index')->name('shop');
 Route::post('/shop/cart', '\App\Http\Controllers\ShopController@cart')->name('shop.cart');
 
 Route::group(['middleware' => ['customer']], function () {
-    Route::get('/cart', function () {
-        return view('cart');
-    })->name('cart');
-    Route::get('/orders', function () {
-        return view('orders');
-    })->name('orders');
+
+    Route::get('/cart/{cart}', '\App\Http\Controllers\CartController@index')->name('cart.index');
+    Route::delete('/cart/{cart}/remove/{product}', '\App\Http\Controllers\CartController@remove')->name('cart.remove.product');
+    Route::get('/cart/{cart}/clear', '\App\Http\Controllers\CartController@clear')->name('cart.clear');
+    Route::get('/cart/{cart}/submit', '\App\Http\Controllers\CartController@submit')->name('cart.submit');
+    
+    Route::get('/orders', '\App\Http\Controllers\OrderController@index')->name('order.index');
+
+
+    // Route::get('/orders', function () {
+    //     return view('orders');
+    // })->name('orders');
 });

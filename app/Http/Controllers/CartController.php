@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,63 +11,15 @@ use Illuminate\Support\Facades\Hash;
 
 class CartController extends Controller
 {
-    public function loginCart(Cart $cart){
-
-        dd($cart);
-        return view('auth.login-cart', $cart);
-    }
-    public function loginCartProcess(Request $request, Cart $cart){
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-        // dd('voila');
-        if (Auth::attempt([
-            'email' => $request->email,
-            'password' => $request->password
-        ])) {
-            // Authentication passed...
-            return redirect()->route('dashboard.index');
-        } else {
-            return redirect()->back()->with('error', 'Invalid username or password');
-        }
-    }
-
-    public function registerCart(Cart $cart){
-        return view('auth.login-cart');
-    }
-
-    public function registerCartProcess(Request $request, Cart $cart){
-         // dd($request);
-         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'email|required|unique:users',
-            'password' => 'confirmed|required',
-        ]);
-
-        $name = $request->name;
-        $email = $request->email;
-        $password = Hash::make($request->password);
-        
-        User::create(compact('name', 'email', 'password'));
-        if (Auth::attempt([
-            'email' => $request->email,
-            'password' => $request->password
-        ])) {
-            // Authentication passed...
-            return redirect()->route('shop');
-        } else {
-            return redirect()->back()->with('error', 'Invalid username or password');
-        }
-    }
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Cart $cart)
     {
-        //
+        return view('cart', compact('cart'));
     }
 
     /**
@@ -74,9 +27,14 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function clear(Cart $cart)
     {
-        //
+        $products = $cart->products;
+        foreach ($products as $product) {
+            $cart->products()->detach($product->id);
+        }
+
+        return redirect()->route('cart.index', compact('cart'));
     }
 
     /**
@@ -85,9 +43,12 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function submit(Cart $cart)
     {
-        //
+        $cart->submitted = true;
+        $cart->save();
+
+        return redirect()->route('order.index');
     }
 
     /**
@@ -96,9 +57,11 @@ class CartController extends Controller
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function show(Cart $cart)
+    public function remove(Cart $cart, Product $product)
     {
-        //
+        $cart->products()->detach($product->id);
+
+        return redirect()->route('cart.index', compact('cart'));
     }
 
     /**
