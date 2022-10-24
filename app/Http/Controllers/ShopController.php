@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Product;
 use App\Models\Shop;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Str;
+use Illuminate\Http\Response;
 
 class ShopController extends Controller
 {
@@ -13,77 +17,49 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // find or create user cart that hasn't been checked-out yet 
-        Cart::firstOrCreate(['client_id' =>auth()->user()->id, 'ordered_at' => null]);
+        $products = Product::all()->whereNotNull('price');
 
-        return view('shop');
+        if (auth()->user())
+            $cart = Cart::firstOrCreate(['client_id' => auth()->user()->id, 'ordered_at' => null]);
+        else
+            $cart = null;
+        return view('shop', compact('cart', 'products'));
     }
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function cart(Request $request)
     {
-        //
+
+        $cart =  Cart::create();
+
+        $product_ids = $request->all();
+        unset($product_ids['_token']);
+
+        foreach ($product_ids as $id => $binary) {
+            $cart->products()->attach($id);
+        }
+
+        return redirect()->route('login.cart', $cart);
+
+        // $data = $request->all();
+        // app('redirect')->setIntendedUrl(route('cart', $cart->id));
+
+        // if (auth()->user())
+        //     dd('hi');
+        // else{
+        //     return redirect('/shop/cart/' . $cart->id);
+        // }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function cart_products(){
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Shop  $shop
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Shop $shop)
-    {
-        //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Shop  $shop
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Shop $shop)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Shop  $shop
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Shop $shop)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Shop  $shop
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Shop $shop)
-    {
-        //
-    }
+    
 }

@@ -15,17 +15,28 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/shop/cart/{cart}', '\App\Http\Controllers\CartController@loginCart')->name('cart.login');
+// Route::post('/shop/cart/{cart}', '\App\Http\Controllers\CartController@loginCartProcess')->name('cart.login');
+// Route::get('/shop/cart/{cart}', '\App\Http\Controllers\CartController@registerCart')->name('cart.register');
+// Route::post('/shop/cart/{cart}', '\App\Http\Controllers\CartController@registerCartProcess')->name('cart.register');
+Route::middleware('guest')->group(function () {
+    Route::get('/', '\App\Http\Controllers\AuthController@showLogin');
+    Route::post('/', '\App\Http\Controllers\AuthController@login')->name('login');
+    Route::post('/cart/{cart}', '\App\Http\Controllers\AuthController@loginCart')->name('login.cart.process');
+    Route::get('/login', '\App\Http\Controllers\AuthController@showLogin')->name('login');
+    Route::get('/login/cart/{cart}', '\App\Http\Controllers\AuthController@showLoginCart')->name('login.cart.show');
 
-Route::get('/', '\App\Http\Controllers\AuthController@showLogin');
-Route::get('/login', '\App\Http\Controllers\AuthController@showLogin');
-Route::get('/register', '\App\Http\Controllers\AuthController@showRegister')->name('register');
-Route::post('/register', '\App\Http\Controllers\AuthController@register')->name('register.user');
-Route::post('/', '\App\Http\Controllers\AuthController@login')->name('login');
-Route::post('/logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
-
-Route::get('/profile', '\App\Http\Controllers\ProfileController@index')->middleware('auth')->name('profile.index');
-Route::put('/profile/updateProfile', '\App\Http\Controllers\ProfileController@updateProfile')->middleware('auth')->name('profile.details');
-Route::put('/profile/updatePassword', '\App\Http\Controllers\ProfileController@updatePassword')->middleware('auth')->name('profile.update.password');
+    Route::get('/register', '\App\Http\Controllers\AuthController@showRegister')->name('register');
+    Route::get('/register/cart/{cart}', '\App\Http\Controllers\AuthController@showRegisterCart')->name('register.cart');
+    Route::post('/register', '\App\Http\Controllers\AuthController@register')->name('register.user');
+    Route::post('/register/cart/{cart}', '\App\Http\Controllers\AuthController@registerCart')->name('register.cart');
+});
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
+    Route::get('/profile', '\App\Http\Controllers\ProfileController@index')->middleware('auth')->name('profile.index');
+    Route::put('/profile/updateProfile', '\App\Http\Controllers\ProfileController@updateProfile')->middleware('auth')->name('profile.details');
+    Route::put('/profile/updatePassword', '\App\Http\Controllers\ProfileController@updatePassword')->middleware('auth')->name('profile.update.password');
+});
 
 Route::middleware('admin')->group(function () {
 
@@ -41,11 +52,6 @@ Route::middleware('admin')->group(function () {
 
 //staff
 Route::group(['middleware' => ['staff']], function () {
-
-
-
-
-
     Route::resource('/transactions/expenses', '\App\Http\Controllers\ExpensesController');
 
     Route::resource('/transactions/sales', '\App\Http\Controllers\SaleController');
@@ -97,11 +103,10 @@ Route::group(['middleware' => ['staff']], function () {
 });
 
 // customer
-Route::group(['middleware' => ['auth', 'customer']], function () {
-    Route::get('/shop', '\App\Http\Controllers\ShopController@index')->name('shop');
+Route::get('/shop', '\App\Http\Controllers\ShopController@index')->name('shop');
+Route::post('/shop/cart', '\App\Http\Controllers\ShopController@cart')->name('shop.cart');
 
-
-
+Route::group(['middleware' => ['customer']], function () {
     Route::get('/cart', function () {
         return view('cart');
     })->name('cart');

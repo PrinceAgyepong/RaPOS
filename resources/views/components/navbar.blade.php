@@ -11,7 +11,8 @@
             </div>
             <a class="navbar-brand text-white" href="#">{{ $pageSlug }}</a>
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+            aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -56,17 +57,24 @@
                         <p class="d-lg-none">{{ __('Log out') }}</p>
                     </a>
                     <ul class="dropdown-menu dropdown-navbar">
-                        <li class="nav-link">
-                            <a href="{{('profile.index')}}" class="nav-item dropdown-item">{{ __('Profile') }}</a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="nav-link">
-                            <form action="{{('logout')}}" method="post">
-                                @csrf
-                                <input class="nav-item dropdown-item" type="submit" value="Log out">
-                            </form>
-                            {{-- <a href="" class="nav-item dropdown-item" onclick="event.preventDefault();  document.getElementById('logout-form').submit();">{{ __('Log out') }}</a> --}}
-                        </li>
+                        @auth
+                            <li class="nav-link">
+                                <a href="{{ 'profile.index' }}" class="nav-item dropdown-item">{{ __('Profile') }}</a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li class="nav-link">
+                                <form action="{{ 'logout' }}" method="post">
+                                    @csrf
+                                    <input class="nav-item dropdown-item" type="submit" value="Log out">
+                                </form>
+                                {{-- <a href="" class="nav-item dropdown-item" onclick="event.preventDefault();  document.getElementById('logout-form').submit();">{{ __('Log out') }}</a> --}}
+                            </li>
+                        @else
+                            <li class="nav-link">
+                                <a href="{{ 'login' }}" class="nav-item dropdown-item">{{ __('Log in') }}</a>
+                            </li>
+                        @endauth
+
                     </ul>
                 </li>
                 <li class="separator d-lg-none"></li>
@@ -74,14 +82,15 @@
         </div>
     </div>
 </nav>
-<div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+<div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="{{ __('SEARCH') }}">
                 <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('Close') }}">
                     <i class="tim-icons icon-simple-remove"></i>
-              </button>
+                </button>
             </div>
         </div>
     </div>

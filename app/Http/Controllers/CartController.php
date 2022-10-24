@@ -3,10 +3,62 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class CartController extends Controller
 {
+    public function loginCart(Cart $cart){
+
+        dd($cart);
+        return view('auth.login-cart', $cart);
+    }
+    public function loginCartProcess(Request $request, Cart $cart){
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+        // dd('voila');
+        if (Auth::attempt([
+            'email' => $request->email,
+            'password' => $request->password
+        ])) {
+            // Authentication passed...
+            return redirect()->route('dashboard.index');
+        } else {
+            return redirect()->back()->with('error', 'Invalid username or password');
+        }
+    }
+
+    public function registerCart(Cart $cart){
+        return view('auth.login-cart');
+    }
+
+    public function registerCartProcess(Request $request, Cart $cart){
+         // dd($request);
+         $this->validate($request, [
+            'name' => 'required',
+            'email' => 'email|required|unique:users',
+            'password' => 'confirmed|required',
+        ]);
+
+        $name = $request->name;
+        $email = $request->email;
+        $password = Hash::make($request->password);
+        
+        User::create(compact('name', 'email', 'password'));
+        if (Auth::attempt([
+            'email' => $request->email,
+            'password' => $request->password
+        ])) {
+            // Authentication passed...
+            return redirect()->route('shop');
+        } else {
+            return redirect()->back()->with('error', 'Invalid username or password');
+        }
+    }
     /**
      * Display a listing of the resource.
      *

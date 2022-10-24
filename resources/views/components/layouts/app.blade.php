@@ -1,4 +1,4 @@
-@props(['pageSlug', 'section', 'page', 'js' => ''])
+@props(['pageSlug', 'section', 'page', 'js' => '', 'hasSidebar' => true ])
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -32,6 +32,9 @@
             box-shadow: 10px 10px 5px 0px #86000cbf !important;
             -webkit-box-shadow: 10px 10px 5px 0px rgba(134, 0, 12, 0.75) !important;
             -moz-box-shadow: 10px 10px 5px 0px rgba(134, 0, 12, 0.75) !important;
+        }
+        .card:hover .add-btn{
+            display: block !important
         }
     </style>
 
@@ -121,11 +124,18 @@
     {{-- @auth() --}}
     <div class="wrapper">
 
+        @auth
         <x-sidebar :pageSlug='$pageSlug' :section='$section' />
+            
+        @endif
         <div class="main-panel">
             {{-- @include('layouts.navbars.navbar') --}}
             <x-navbar :pageSlug='$pageSlug' />
+            @auth
             <div class="content">
+            @else
+            <div class="content" style="padding: 78px 30px 30px 60px">
+            @endauth
                 {{-- @yield('content') --}}
                 {{ $slot }}
             </div>
@@ -272,34 +282,7 @@
 
     <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
 
-    <script>
-        var lastmonths = ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-
-        // {{-- @foreach ($lastmonths as $id => $month)
-        //     lastmonths.push('{{ strtoupper($month) }}')
-        // @endforeach --}}
-
-        var lastincomes = ['1200', '2000', '1600', '2200', '1203', '1896'] // {{-- {{ $lastincomes }} --}};
-        var lastexpenses = ['1200', '2000', '1600', '2200', '1203', '1896'] // {{-- {{ $lastexpenses }} --}};
-
-        // var anualsales = [] // {{-- {{ $anualsales }} --}};
-        // var anualexpenses = [] // {{-- {{ $anualproducts }} --}};
-        var anualsales = [500, 700, 630, 567, 440, 800, 497, 534, 445, 654, 643, 432] // {{-- {{ $anualsales }} --}};
-        var anualclients = [0, 4, 10, 8, 9, 6, 3, 1, 6, 3, 8, 3] // {{-- {{ $anualclients }} --}};
-        var anualexpenses = [50, 70, 30, 57, 44, 0, 97, 54, 45, 64, 63, 32] // {{-- {{ $anualproducts }} --}};
-
-        var methods = ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-        var methods_stats = ['1200', '2000', '1600', '2200', '1203', '1896'];
-
-        // {{-- @foreach ($monthlybalancebymethod as $method => $balance)
-        //     methods.push('{{ $method }}');
-        //     methods_stats.push('{{ $balance }}');
-        // @endforeach --}}
-
-        $(document).ready(function() {
-            demo.initDashboardPageCharts();
-        });
-    </script>
+    
 
     {{-- sales index --}}
     <script>
